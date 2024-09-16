@@ -1,10 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-// import { PORT, mongodbURL } from './config.js';
+import { PORT, mongodbURL } from './config.js';
 import booksRoutes from './routes/booksRoutes.js';
-const PORT = process.env.PORT || 5555;
-const mongodbURL = process.env.DATABASE;
+// const BASE_URL = process.env.BASE_URL;
 const app = express();
 
 app.use(express.json());    // middleware to convert string data into json data which is coming from req.
@@ -27,7 +26,4 @@ mongoose
             console.log(`App started:) at port: ${PORT}`);
         })
     })
-    .catch(error => {
-        console.log("App not connected to database.");
-        console.log(error);
-    })
+    .catch(error => console.log("App not connected to database."))
